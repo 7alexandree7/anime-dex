@@ -1,4 +1,4 @@
-import DecryptedText from "../motion/DecryptedText"
+import DecryptedText from "../motion/DecryptedText";
 
 const Logo = () => {
     return (

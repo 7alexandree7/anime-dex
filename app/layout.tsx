@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header/Header";
+import Header from "../components/Header/Header";
 import { cn } from "@/lib/utils";
 
 
