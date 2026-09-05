@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Archivo_Black, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
+import { cn } from "@/lib/utils";
+
 
 const archivoBlack = Archivo_Black({
   variable: "--font-heading",
@@ -44,9 +46,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${archivoBlack.variable} ${inter.variable} ${spaceMono.variable} h-full antialiased}`}
+      className={cn("h-full", "antialiased}", archivoBlack.variable, inter.variable, spaceMono.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col background-">
         <Header />
         {children}
 
