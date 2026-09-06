@@ -1,0 +1,1 @@
+export const technologyList: string[] = ["Next.js", "Tailwind", "TypeScript", "Prisma + Neon", "Better Auth", "Jikan API"];
