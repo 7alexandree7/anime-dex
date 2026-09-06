@@ -2,8 +2,8 @@
 
 import DecryptedText from "@/components/motion/DecryptedText";
 import Link from "next/link";
-import Technologies from "./landing/Technologies";
-import ProductPreview from "./landing/ProductPreview";
+import Technologies from "./Technologies";
+import ProductPreview from "./ProductPreview";
 
 const Hero = () => {
     return (
