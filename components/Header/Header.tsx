@@ -11,7 +11,7 @@ const Header = () => {
                 <Logo />
                 <HeaderButtons />
             </header>
-            <div className="w-full overflow-hidden border-b-3 border-black" />
+            <div className="w-full overflow-hidden border-b-3 border-black mb-20" />
         </>
     )
 }
