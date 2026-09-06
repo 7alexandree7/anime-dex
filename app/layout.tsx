@@ -48,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pt-BR"
       className={cn("h-full", "antialiased}", archivoBlack.variable, inter.variable, spaceMono.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col">
+      <body suppressHydrationWarning={true} className="min-h-full flex flex-col">
         <Header />
         {children}
 

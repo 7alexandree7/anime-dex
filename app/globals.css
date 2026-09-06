@@ -46,7 +46,7 @@
   --color-foreground: var(--foreground);
   --color-red: var(--color-red);
   --color-graphite: var(--color-graphite);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
   --font-sans: var(--font-sans);
