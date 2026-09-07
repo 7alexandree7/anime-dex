@@ -20,7 +20,9 @@ Aplicativo pessoal para acompanhar animes assistidos, em andamento e na lista de
 ## 🗺️ Roadmap
 
 ### Fase 1 — Interface visual (sem lógica de backend)
-- [ ] Landing Page
+- [✅] Header
+- [✅] Landing Page
+- [ ] Implementar Tradução para jp
 - [ ] Tela de Login (visual)
 - [ ] Tela de Registro (visual)
 
