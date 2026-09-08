@@ -22,7 +22,7 @@ const ProductPreview = () => {
                         {suggestionsList.map((suggestion, index) => (
                             <div
                                 key={index}
-                                className="flex items-center gap-3 px-3.5 py-2.5 border-b border-black/10 last:border-b-0 text-sm"
+                                className="flex items-center gap-3 px-3.5 py-2.5 border-black/10  text-sm"
                             >
                                 <div className="w-7.5 h-10.5 border-2 border-black" style={{ backgroundColor: suggestion.color }}></div>
 
