@@ -3,6 +3,7 @@ import { Archivo_Black, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header/Header";
 import { cn } from "@/lib/utils";
+import { LanguageProvider } from "@/context/LanguageProvider";
 
 
 const archivoBlack = Archivo_Black({
@@ -49,9 +50,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn("h-full", "antialiased}", archivoBlack.variable, inter.variable, spaceMono.variable, "font-sans")}
     >
       <body suppressHydrationWarning={true} className="min-h-full flex flex-col">
-        <Header />
-        {children}
-
+        <LanguageProvider>
+          <Header />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
