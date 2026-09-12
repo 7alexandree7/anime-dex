@@ -14,3 +14,12 @@ export interface HeroDictionaryType {
   startButton: string;
   githubButton: string;
 }
+
+export interface Suggestion {
+    initial: string;
+    exampleAnime: string;
+    exampleAnime2: string;
+    episodes2: string;
+    episodes: string;
+    color: string;
+}

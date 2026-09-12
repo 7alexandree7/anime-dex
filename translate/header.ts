@@ -1,5 +1,5 @@
 import { LanguageCode } from "../types/language";
-import { HeaderDictionaryType } from "../types/dictionaryTranslate";
+import { HeaderDictionaryType } from "@/types/dictionaryTranslate";
 
 export const headerDictionary: Record<LanguageCode, HeaderDictionaryType> = {
   pt: {

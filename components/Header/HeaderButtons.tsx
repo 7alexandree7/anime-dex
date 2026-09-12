@@ -3,7 +3,7 @@
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChevronDown } from 'lucide-react';
-import { headerDictionary } from "@/translate";
+import { headerDictionary } from "@/translate/header";
 import {
     DropdownMenu,
     DropdownMenuContent,

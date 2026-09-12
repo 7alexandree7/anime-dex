@@ -5,7 +5,7 @@ import Link from "next/link";
 import Technologies from "./Technologies";
 import ProductPreview from "./ProductPreview";
 import { useLenguage } from "@/hooks/useLenguage";
-import { heroDictionary } from "@/translate";
+import { heroDictionary } from "@/translate/hero";
 
 const Hero = () => {
 
