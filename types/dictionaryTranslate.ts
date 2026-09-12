@@ -6,3 +6,11 @@ export interface HeaderDictionaryType {
   settings: string;
   logout: string;
 }
+
+export interface HeroDictionaryType {
+  title: string;
+  span: string;
+  description: string;
+  startButton: string;
+  githubButton: string;
+}
