@@ -1,7 +1,5 @@
-interface StatusListHome {
-    label: string,
-    active: boolean
-}
+import { StatusListHome } from "@/types/constList";
+
 
 export const statusesList: StatusListHome[] = [
     {label: "Assistindo", active: true},

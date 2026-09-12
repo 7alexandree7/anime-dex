@@ -1,9 +1,5 @@
-interface Feature {
-    id: string;
-    title: string;
-    description: string;
-    size: string;
-}
+import { Feature } from "@/types/constList";
+
 
 
 export const featureList: Feature[] = [

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react'
-import { LanguageCode, LanguageContext } from './LanguageContext'
+import { LanguageContext } from './LanguageContext'
+import { LanguageCode } from '@/types/language';
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
 

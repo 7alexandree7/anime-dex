@@ -1,8 +1,5 @@
-interface Suggestion {
-    name: string,
-    meta: string,
-    color: string
-}
+import { Suggestion } from "@/types/constList";
+
 
 export const suggestionsList: Suggestion[] = [
     {name: "Naruto", meta: "TV · 220 episódios", color: "#E8352C"},

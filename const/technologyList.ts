@@ -1,1 +1,11 @@
-export const technologyList: string[] = ["Next.js", "Tailwind", "TypeScript", "Prisma + Neon", "Better Auth", "Jikan API"];
+import { Technology } from "@/types/constList";
+
+
+export const technologyList: Technology[] = [
+  Technology.NextJs,
+  Technology.Tailwind,
+  Technology.TypeScript,
+  Technology.PrismaNeon,
+  Technology.BetterAuth,
+  Technology.JikanApi,
+];
