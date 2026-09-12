@@ -11,13 +11,6 @@ export interface StatusListHome {
     active: boolean,
 }
 
-
-export interface Suggestion {
-    name: string,
-    meta: string,
-    color: string
-}
-
 export enum Technology {
   NextJs = "Next.js",
   Tailwind = "Tailwind",
