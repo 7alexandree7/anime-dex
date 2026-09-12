@@ -1,8 +1,12 @@
+"use client";
+
 import { createContext, Dispatch, SetStateAction } from "react";
 
-type LanguafeContextType = {
-  lang: string;
-  setLang: Dispatch<SetStateAction<string>>;
+export type LanguageCode = "pt" | "ja";
+
+type LanguageContextType = {
+  lang: LanguageCode;
+  setLang: Dispatch<SetStateAction<LanguageCode>>;
 };
 
-export const LanguageContext = createContext<LanguafeContextType | null>(null);
+export const LanguageContext = createContext<LanguageContextType | null>(null);

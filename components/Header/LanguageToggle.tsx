@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from 'react';
 import { BR, JP } from "country-flag-icons/react/3x2";
+import { useLenguage } from '@/hooks/useLenguage';
 
 const LanguageToggle = () => {
 
-    const [language, setLanguage] = useState<"pt" | "ja">("pt");
+    const { lang, setLang } = useLenguage()
 
     return (
         <button
             className='w-10 h-10 cursor-pointer'
-            onClick={() => setLanguage(language === "pt" ? "ja" : "pt")}
+            onClick={() => setLang(lang === "pt" ? "ja" : "pt")}
         >
-            {language === "pt" ? (
+            {lang === "pt" ? (
                 <BR title='Português' className="w-8 h-8 object-cover " />
             ) : (
                 <JP title='日本語' className="w-8 h-8 object-cover" />
