@@ -22,4 +22,5 @@ export interface Suggestion {
     episodes2: string;
     episodes: string;
     color: string;
+    text: string;
 }

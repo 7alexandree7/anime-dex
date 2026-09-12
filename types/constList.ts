@@ -6,8 +6,9 @@ export interface Feature {
 }
 
 export interface StatusListHome {
-    label: string,
-    active: boolean
+    labelPt: string,
+    labelJa: string,
+    active: boolean,
 }
 
 

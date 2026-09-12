@@ -1,4 +1,4 @@
-import { statusesList } from "@/const/statusesList"
+import { status } from "@/translate/statust"
 import { useLenguage } from "@/hooks/useLenguage"
 import { suggestionsTranslate } from "@/translate/sugesion";
 
@@ -54,19 +54,19 @@ const ProductPreview = () => {
 
 
                     <div className="flex gap-2 mt-5 flex-wrap">
-                        {statusesList.map((status, index) => (
+                        {status.map((s, index) => (
                             <div
                                 key={index}
-                                className={`text-xs font-bold border-2 border-black px-3.5 py-1.5 ${status.active ? "bg-red text-white" : "bg-background text-graphite"}`}
+                                className={`text-xs font-bold border-2 border-black px-3.5 py-1.5 ${s.active ? "bg-red text-white" : "bg-background text-graphite"}`}
                             >
-                                {status.label}
+                                {lang === "pt" ? s.labelPt : s.labelJa}
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
 
-            <p className="font-mono text-xs text-graphite mt-4">preview real da interface do app</p>
+            <p className="font-mono text-xs text-graphite mt-4">{t[0].text}</p>
         </section>
     )
 }
