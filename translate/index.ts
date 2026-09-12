@@ -1,0 +1,1 @@
+export { headerDictionary } from "./header"

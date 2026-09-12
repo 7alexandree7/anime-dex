@@ -1,6 +1,9 @@
+"use client";
+
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChevronDown } from 'lucide-react';
+import { headerDictionary } from "@/translate";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,10 +13,13 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import LanguageToggle from "./LanguageToggle";
+import { useLenguage } from "@/hooks/useLenguage";
 
 const HeaderButtons = () => {
 
-    const isLoggedIn: boolean = false;
+  const isLoggedIn: boolean = false;
+  const { lang } = useLenguage()
+  const t = headerDictionary[lang]
 
     return (
         <>
@@ -25,14 +31,14 @@ const HeaderButtons = () => {
                             variant="link"
                             className={"cursor-pointer decoration-none, text-black font-semibold p-4.5 rounded-none text-base"}
                         >
-                            Entrar
+                            {t.login}
                         </Button>
                         <Button
                             variant="default"
                             className="bg-red border-3 border-black shadow-[3px_3px_0_black] hover:translate-x-px hover:translate-y-px hover:shadow-[2px_2px_0_black] text-white font-bold p-4.5 rounded-none"
                             style={{ cursor: "pointer", fontSize: "1rem" }}
                         >
-                            Criar Conta
+                            {t.createAccount}
                         </Button>
                     </div>
                 </div>
@@ -64,13 +70,13 @@ const HeaderButtons = () => {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end" sideOffset={25} className={"bg-background w-50 -mr-4.5 rounded-none p-4"}>
                                         <DropdownMenuGroup>
-                                            <DropdownMenuItem className={"cursor-pointer"}>👤 Meu Perfil</DropdownMenuItem>
+                                            <DropdownMenuItem className={"cursor-pointer"}>👤 {t.myProfile}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer"}>📋 Minha Lista</DropdownMenuItem>
+                                            <DropdownMenuItem className={"cursor-pointer"}>📋 {t.myList}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer"}>⚙️ Configurações</DropdownMenuItem>
+                                            <DropdownMenuItem className={"cursor-pointer"}>⚙️ {t.settings}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer text-red"}>↪ Sair</DropdownMenuItem>
+                                            <DropdownMenuItem className={"cursor-pointer text-red"}>↪ {t.logout}</DropdownMenuItem>
                                         </DropdownMenuGroup>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
