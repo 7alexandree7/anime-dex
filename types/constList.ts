@@ -1,15 +1,3 @@
-export interface Feature {
-    id: string;
-    title: string;
-    description: string;
-    size: string;
-}
-
-export interface StatusListHome {
-    labelPt: string,
-    labelJa: string,
-    active: boolean,
-}
 
 export enum Technology {
   NextJs = "Next.js",

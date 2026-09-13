@@ -24,3 +24,28 @@ export interface Suggestion {
     color: string;
     text: string;
 }
+
+export interface StatusListHome {
+    labelPt: string,
+    labelJa: string,
+    active: boolean,
+}
+
+
+// types/dictionaryTranslate.ts
+export interface Feature {
+  id: string;
+  titlePt: string;
+  titleJa: string;
+  descriptionPt: string;
+  descriptionJa: string;
+  size: string;
+}
+
+
+export interface FeatureHero {
+  titlePt: string;
+  titleJa: string;
+  descriptionPt: string;
+  descriptionJa: string;
+}

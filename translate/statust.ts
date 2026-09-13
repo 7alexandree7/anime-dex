@@ -1,4 +1,4 @@
-import { StatusListHome } from "@/types/constList";
+import { StatusListHome } from "@/types/dictionaryTranslate";
 
 
 export const status: StatusListHome[] = [
