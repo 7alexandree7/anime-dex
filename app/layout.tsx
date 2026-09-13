@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header/Header";
 import { cn } from "@/lib/utils";
 import { LanguageProvider } from "@/context/LanguageProvider";
 
@@ -51,7 +50,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body suppressHydrationWarning={true} className="min-h-full flex flex-col">
         <LanguageProvider>
-          <Header />
           {children}
         </LanguageProvider>
       </body>

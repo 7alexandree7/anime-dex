@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import LanguageToggle from "./LanguageToggle";
 import { useLenguage } from "@/hooks/useLenguage";
+import Link from "next/link";
 
 const HeaderButtons = () => {
 
@@ -27,19 +28,19 @@ const HeaderButtons = () => {
                 <div className="flex items-center">
                     <LanguageToggle />
                     <div className="flex items-center gap-4 mr-12">
-                        <Button
-                            variant="link"
+                        <Link
+                            href="/login"
                             className={"cursor-pointer decoration-none, text-black font-semibold p-4.5 rounded-none text-base"}
                         >
                             {t.login}
-                        </Button>
-                        <Button
-                            variant="default"
+                        </Link>
+                        <Link
+                            href="/register"
                             className="bg-red border-3 border-black shadow-[3px_3px_0_black] hover:translate-x-px hover:translate-y-px hover:shadow-[2px_2px_0_black] text-white font-bold p-4.5 rounded-none"
                             style={{ cursor: "pointer", fontSize: "1rem" }}
                         >
                             {t.createAccount}
-                        </Button>
+                        </Link>
                     </div>
                 </div>
             ) : (
