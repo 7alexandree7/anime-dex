@@ -1,4 +1,14 @@
-import { technologyList } from "@/const/technologyList";
+import { Technology } from "@/types/constList";
+
+const technologyList: Technology[] = [
+  Technology.NextJs,
+  Technology.Tailwind,
+  Technology.TypeScript,
+  Technology.PrismaNeon,
+  Technology.BetterAuth,
+  Technology.JikanApi,
+];
+
 
 const Technologies = () => {
     return (
