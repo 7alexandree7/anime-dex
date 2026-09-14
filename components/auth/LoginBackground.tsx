@@ -1,5 +1,4 @@
 
-
 const LoginBackground = () => {
     return (
         <>
@@ -7,10 +6,11 @@ const LoginBackground = () => {
                 autoPlay
                 loop
                 playsInline
-                preload='none'
+                preload='auto'
+                muted
                 className='fixed inset-0 -z-20 w-screen h-screen object-cover'
             >
-                <source src={"/editanime.mp4"} />
+                <source src={"/authvideo.mp4"} type="video/mp4" />
             </video>
         </>
     )
