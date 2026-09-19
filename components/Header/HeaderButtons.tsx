@@ -14,12 +14,17 @@ import {
 import LanguageToggle from "./LanguageToggle";
 import { useLenguage } from "@/hooks/useLenguage";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 const HeaderButtons = () => {
 
-  const isLoggedIn: boolean = false;
+  const {data: session } = authClient.useSession();
+  const isLoggedIn: boolean = !!session
+
   const { lang } = useLenguage()
   const t = headerDictionary[lang]
+
+  const handleLogout = async () =>  await authClient.signOut();
 
     return (
         <>
@@ -53,13 +58,13 @@ const HeaderButtons = () => {
                             <div className="flex items-center gap-2">
                                 <Avatar>
                                     <AvatarImage
-                                        src="https://github.com/shadcn.png"
-                                        alt="@shadcn"
+                                        src={session?.user.image ?? "https://github.com/shadcn.png"}
+                                        alt={session?.user.name ?? "@shadcn"}
                                     />
                                     <AvatarFallback>CN</AvatarFallback>
                                 </Avatar>
                                 <div>
-                                    <p>Unfast</p>
+                                    <p>{session?.user.name}</p>
                                 </div>
                             </div>
 
@@ -76,7 +81,12 @@ const HeaderButtons = () => {
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem className={"cursor-pointer"}>⚙️ {t.settings}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer text-red"}>↪ {t.logout}</DropdownMenuItem>
+                                            <DropdownMenuItem
+                                             className={"cursor-pointer text-red"}
+                                             onClick={handleLogout}
+                                             >
+                                                ↪ {t.logout}
+                                                </DropdownMenuItem>
                                         </DropdownMenuGroup>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
