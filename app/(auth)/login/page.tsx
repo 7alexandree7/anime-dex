@@ -6,10 +6,13 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { LoginFormData, loginSchema } from "@/schemas/login";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 
 const Page = () => {
 
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -21,12 +24,13 @@ const Page = () => {
     setIsLoading(true);
     setErrorMessage(null);
 
-    console.log(data);
-
-    // TODO: const { error } = await authClient.signIn.email(data);
-    // if (error) setErrorMessage("Email ou senha inválidos.");
-
-    setIsLoading(false);
+    const { error } = await authClient.signIn.email({ email: data.email, password: data.password });
+    if (error) {
+      setErrorMessage("E-mail ou senha inválidos.");
+      setIsLoading(false);
+      return;
+    }
+    router.push("/");
   }
 
   return (

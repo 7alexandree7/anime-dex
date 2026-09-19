@@ -6,8 +6,12 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { RegisterFormData, RegisterSchema as registerSchema } from "@/schemas/register";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -19,12 +23,20 @@ const Page = () => {
         setIsLoading(true);
         setErrorMessage(null);
 
-        console.log(data);
+        const { error } = await authClient.signUp.email({
+            email: data.email,
+            password: data.password,
+            name: data.name,
+        });
 
-        // TODO: const { error } = await authClient.signUp.email(data);
-        // if (error) setErrorMessage("Não foi possível criar a conta.");
+        if (error) {
+            setErrorMessage(`Erro ao criar conta: ${error.message}`);
+            setIsLoading(false);
+            return;
+        }
 
-        setIsLoading(false);
+        router.push("/");
+
     };
 
     return (
