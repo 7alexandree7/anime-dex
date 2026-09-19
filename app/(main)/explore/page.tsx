@@ -1,5 +1,4 @@
 
-
 const ExplorePage = () => {
   return (
     <div>
