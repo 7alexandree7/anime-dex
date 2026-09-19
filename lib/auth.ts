@@ -9,5 +9,8 @@ export const auth = betterAuth({
     }),
     emailAndPassword: {
         enabled: true
+    },
+    session: {
+        expiresIn: 30 * 24 * 60 * 60 // 30 days
     }
 })
