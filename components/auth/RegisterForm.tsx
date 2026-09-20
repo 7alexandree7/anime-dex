@@ -11,9 +11,11 @@ interface RegisterFormProps {
     onSubmit: (e: React.FormEvent) => void;
     isLoading?: boolean;
     errorMessage?: string | null;
+    googleLogin?: () => void;
+    githubLogin?: () => void;
 }
 
-const RegisterForm = ({ register, errors, onSubmit, isLoading, errorMessage }: RegisterFormProps) => {
+const RegisterForm = ({ register, errors, onSubmit, isLoading, errorMessage, googleLogin, githubLogin }: RegisterFormProps) => {
     return (
         <Card className="relative w-full max-w-115 rounded-none border-3 border-black shadow-[8px_8px_0_black] bg-white p-1">
             <span className="absolute top-[-2.5px] left-[-2.5px] w-3.5 h-3.5 border-l-[2.5px] border-t-[2.5px] border-red" />
@@ -108,10 +110,20 @@ const RegisterForm = ({ register, errors, onSubmit, isLoading, errorMessage }: R
                     </div>
 
                     <div className="flex gap-2.5">
-                        <Button type="button" variant="outline" className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer">
+                        <Button
+                            onClick={googleLogin}
+                            type="button"
+                            variant="outline"
+                            className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer"
+                        >
                             Google
                         </Button>
-                        <Button type="button" variant="outline" className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer">
+                        <Button
+                            onClick={githubLogin}
+                            type="button"
+                            variant="outline"
+                            className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer"
+                        >
                             GitHub
                         </Button>
                     </div>

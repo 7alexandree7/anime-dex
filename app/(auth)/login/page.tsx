@@ -30,7 +30,15 @@ const Page = () => {
       setIsLoading(false);
       return;
     }
-    router.push("/");
+    router.push("/explore");
+  }
+
+  const googleLogin = async () => {
+    await authClient.signIn.social({ provider: "google", callbackURL: "/explore" });
+  }
+
+  const githubLogin = async () => {
+    await authClient.signIn.social({ provider: "github", callbackURL: "/explore" });
   }
 
   return (
@@ -42,6 +50,8 @@ const Page = () => {
         onSubmit={handleSubmit(onSubmit)}
         isLoading={isLoading}
         errorMessage={errorMessage}
+        googleLogin={googleLogin}
+        githubLogin={githubLogin}
       />
     </main>
   )

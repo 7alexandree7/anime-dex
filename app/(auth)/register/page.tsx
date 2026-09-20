@@ -35,9 +35,18 @@ const Page = () => {
             return;
         }
 
-        router.push("/");
-
+        router.push("/explore");
     };
+
+    const googleLogin = async () => {
+    await authClient.signIn.social({ provider: "google" });
+    router.push("/explore");
+  }
+
+  const githubLogin = async () => {
+    await authClient.signIn.social({ provider: "github" });
+    router.push("/explore");
+  }
 
     return (
         <main className="relative w-screen min-h-screen flex items-center justify-center px-5 overflow-hidden bg-background">
@@ -48,6 +57,8 @@ const Page = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 isLoading={isLoading}
                 errorMessage={errorMessage}
+                googleLogin={googleLogin}
+                githubLogin={githubLogin}
             />
         </main>
     );
