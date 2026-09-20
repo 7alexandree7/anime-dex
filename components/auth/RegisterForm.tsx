@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import LanguageToggle from "../Header/LanguageToggle";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import LoginButtons from "./LoginButtons";
 
 interface RegisterFormProps {
     register: UseFormRegister<RegisterFormData>;
@@ -109,24 +110,8 @@ const RegisterForm = ({ register, errors, onSubmit, isLoading, errorMessage, goo
                         <span className="flex-1 h-px bg-black/15" />
                     </div>
 
-                    <div className="flex gap-2.5">
-                        <Button
-                            onClick={googleLogin}
-                            type="button"
-                            variant="outline"
-                            className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer"
-                        >
-                            Google
-                        </Button>
-                        <Button
-                            onClick={githubLogin}
-                            type="button"
-                            variant="outline"
-                            className="flex-1 rounded-none border-2 border-black bg-background font-semibold text-[13px] hover:shadow-[2px_2px_0_black] cursor-pointer"
-                        >
-                            GitHub
-                        </Button>
-                    </div>
+                    <LoginButtons googleLogin={googleLogin} githubLogin={githubLogin} />
+
                 </form>
             </CardContent>
 

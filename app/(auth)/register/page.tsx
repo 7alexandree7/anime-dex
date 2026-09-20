@@ -8,6 +8,7 @@ import { RegisterFormData, RegisterSchema as registerSchema } from "@/schemas/re
 import { zodResolver } from "@hookform/resolvers/zod";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { useSocialAuth } from "@/hooks/useSocialAuth";
 
 const Page = () => {
 
@@ -38,15 +39,7 @@ const Page = () => {
         router.push("/explore");
     };
 
-    const googleLogin = async () => {
-    await authClient.signIn.social({ provider: "google" });
-    router.push("/explore");
-  }
-
-  const githubLogin = async () => {
-    await authClient.signIn.social({ provider: "github" });
-    router.push("/explore");
-  }
+    const { googleLogin, githubLogin } = useSocialAuth();
 
     return (
         <main className="relative w-screen min-h-screen flex items-center justify-center px-5 overflow-hidden bg-background">
