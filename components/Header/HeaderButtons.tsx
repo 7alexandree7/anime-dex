@@ -36,6 +36,7 @@ const HeaderButtons = ({ initialSession }: HeaderButtonsProps) => {
     const handleLogout = async () => {
         await authClient.signOut()
         router.push("/")
+        router.refresh()
     }
 
     return (
