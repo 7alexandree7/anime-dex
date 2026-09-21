@@ -15,16 +15,28 @@ import LanguageToggle from "./LanguageToggle";
 import { useLenguage } from "@/hooks/useLenguage";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
-const HeaderButtons = () => {
+interface HeaderButtonsProps {
+    initialSession: typeof authClient.$Infer.Session | null;
+}
 
-  const {data: session } = authClient.useSession();
-  const isLoggedIn: boolean = !!session
+const HeaderButtons = ({ initialSession }: HeaderButtonsProps) => {
 
-  const { lang } = useLenguage()
-  const t = headerDictionary[lang]
 
-  const handleLogout = async () =>  await authClient.signOut();
+    const router = useRouter();
+    const { data: clientSession } = authClient.useSession();
+
+    const session = clientSession || initialSession
+    const isLoggedIn = !!session;
+
+    const { lang } = useLenguage()
+    const t = headerDictionary[lang]
+
+    const handleLogout = async () => {
+        await authClient.signOut()
+        router.push("/")
+    }
 
     return (
         <>
@@ -82,11 +94,11 @@ const HeaderButtons = () => {
                                             <DropdownMenuItem className={"cursor-pointer"}>⚙️ {t.settings}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem
-                                             className={"cursor-pointer text-red"}
-                                             onClick={handleLogout}
-                                             >
+                                                className={"cursor-pointer text-red"}
+                                                onClick={handleLogout}
+                                            >
                                                 ↪ {t.logout}
-                                                </DropdownMenuItem>
+                                            </DropdownMenuItem>
                                         </DropdownMenuGroup>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
