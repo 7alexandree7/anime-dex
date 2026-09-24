@@ -13,6 +13,7 @@ const ExplorePage = () => {
       <GenreRow title="Slice of Life" genre="Slice of Life" />
       <GenreRow title="Esporte" genre="Sports" />
       <GenreRow title="Ecchi" genre="Ecchi" />
+      <GenreRow title="Sobrenatural" genre="Supernatural" />
     </main>
   );
 };
