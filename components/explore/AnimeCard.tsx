@@ -1,12 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { AnimeCardData } from "@/types/anime";
+import { useLenguage } from "@/hooks/useLenguage";
 
 interface AnimeCardProps {
     anime: AnimeCardData
 }
 
+
 const AnimeCard = ({ anime }: AnimeCardProps) => {
+
+    const { lang } = useLenguage()
+    const displayTitle = lang === "pt" ? anime.title.english : anime.title.romaji
     return (
         <Link
             href={`/explore/${anime.mailId}`}
@@ -15,7 +22,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
             <div className="relative h-50 border-b-3 border-black overflow-hidden">
                 <Image
                     src={anime.imageUrl}
-                    alt={anime.title.english}
+                    alt={displayTitle}
                     fill
                     className="object-cover"
                     sizes="148px"
@@ -23,7 +30,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
             </div>
             <div className="p-2.5">
                 <p className="text-[12.5px] font-bold leading-tight line-clamp-2 mb-1">
-                    {anime.title.english}
+                    {displayTitle}
                 </p>
                 <p className="text-[10px] text-graphite">
                     {anime.episodes ? `${anime.episodes} eps` : "Em exibição"}

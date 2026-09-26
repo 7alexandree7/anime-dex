@@ -8,7 +8,7 @@ interface TopAnimeRowProps {
 
 const TOP_ANIMES_QUERY = `
 query {
-  Page(page: 1, perPage: 14) {
+  Page(page: 1, perPage: 12) {
     media(type: ANIME, sort: POPULARITY_DESC) {
       id
       idMal
