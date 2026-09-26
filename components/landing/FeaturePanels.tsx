@@ -1,6 +1,6 @@
 "use client";
 
-import { useLenguage } from "@/hooks/useLenguage";
+import { useLanguage } from "@/hooks/useLanguage";
 import { feature, featureHero } from "@/translate/feature"
 
 const FeaturePanels = () => {
@@ -11,7 +11,7 @@ const FeaturePanels = () => {
         "": "",
     }
 
-    const { lang } = useLenguage();
+    const { lang } = useLanguage();
 
     return (
         <section className="px-12 pb-24">

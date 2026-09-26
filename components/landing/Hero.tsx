@@ -4,12 +4,12 @@ import DecryptedText from "@/components/motion/DecryptedText";
 import Link from "next/link";
 import Technologies from "./Technologies";
 import ProductPreview from "./ProductPreview";
-import { useLenguage } from "@/hooks/useLenguage";
+import { useLanguage } from "@/hooks/useLanguage";
 import { heroDictionary } from "@/translate/hero";
 
 const Hero = () => {
 
-    const { lang } = useLenguage();
+    const { lang } = useLanguage();
     const t = heroDictionary[lang]
 
     return (

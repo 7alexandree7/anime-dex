@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AnimeCardData } from "@/types/anime";
-import { useLenguage } from "@/hooks/useLenguage";
+import { useLanguage } from "@/hooks/useLanguage";
 
 interface AnimeCardProps {
     anime: AnimeCardData
@@ -12,7 +12,7 @@ interface AnimeCardProps {
 
 const AnimeCard = ({ anime }: AnimeCardProps) => {
 
-    const { lang } = useLenguage()
+    const { lang } = useLanguage()
     const displayTitle = lang === "pt" ? anime.title.english : anime.title.romaji
 
     return (

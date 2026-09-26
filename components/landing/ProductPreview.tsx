@@ -1,10 +1,10 @@
 import { status } from "@/translate/statust"
-import { useLenguage } from "@/hooks/useLenguage"
+import { useLanguage } from "@/hooks/useLanguage"
 import { suggestionsTranslate } from "@/translate/sugesion";
 
 const ProductPreview = () => {
 
-    const { lang } = useLenguage();
+    const { lang } = useLanguage();
     const t = suggestionsTranslate[lang]
 
     return (

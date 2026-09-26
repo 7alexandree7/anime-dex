@@ -1,6 +1,6 @@
     "use client";
 
-    import { useLenguage } from "@/hooks/useLenguage";
+    import { useLanguage } from "@/hooks/useLanguage";
     import { AnimeCardData } from "@/types/anime";
     import AnimeCard from "./AnimeCard";
     import { exploreTitles } from "@/translate/explore";
@@ -13,7 +13,7 @@
 
     const AnimeRow = ({ titleKey, animes }: AnimeRowProps) => {
 
-        const { lang } = useLenguage()
+        const { lang } = useLanguage()
         const displayTitle = exploreTitles[titleKey][lang]
 
         return (

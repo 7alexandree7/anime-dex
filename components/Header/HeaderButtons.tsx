@@ -12,7 +12,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import LanguageToggle from "./LanguageToggle";
-import { useLenguage } from "@/hooks/useLenguage";
+import { useLanguage } from "@/hooks/useLanguage";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ const HeaderButtons = ({ initialSession }: HeaderButtonsProps) => {
     const session = clientSession || initialSession
     const isLoggedIn = !!session;
 
-    const { lang } = useLenguage()
+    const { lang } = useLanguage()
     const t = headerDictionary[lang]
 
     const handleLogout = async () => {

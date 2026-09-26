@@ -1,11 +1,11 @@
 "use client";
 
 import { BR, JP } from "country-flag-icons/react/3x2";
-import { useLenguage } from '@/hooks/useLenguage';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const LanguageToggle = () => {
 
-    const { lang, setLang } = useLenguage()
+    const { lang, setLang } = useLanguage()
 
     return (
         <button
