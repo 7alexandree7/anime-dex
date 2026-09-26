@@ -1,39 +1,31 @@
-import AnimeCard from "./AnimeCard";
+import AnimeCard from "./AnimeCard"
 import { AnimeCardData } from "@/types/anime";
 import { AnilistMedia, AnilistPageResponse } from "@/types/anilist";
 
-interface GenreRowProps {
-    title: string;
-    genre: string;
+interface TopAnimeRowProps {
+    title: string
 }
 
-
-const ANILIST_QUERY = `
-  query ($genre: String) {
-    Page(page: 1, perPage: 14) {
-      media(genre: $genre, type: ANIME, sort: POPULARITY_DESC) {
-        id
-        idMal
-        title {
-          romaji
-          english
-        }
-        episodes
-        coverImage {
-          large
-        }
-      }
+const TOP_ANIMES_QUERY = `
+query {
+  Page(page: 1, perPage: 14) {
+    media(type: ANIME, sort: POPULARITY_DESC) {
+      id
+      idMal
+      title { romaji english }
+      episodes
+      coverImage { large }
     }
   }
-`;
+}
+`
 
-async function getAnimeByGenre(genre: string): Promise<AnimeCardData[]> {
+async function getPopularAnimes(): Promise<AnimeCardData[]> {
     const response = await fetch("https://graphql.anilist.co", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            query: ANILIST_QUERY,
-            variables: { genre },
+            query: TOP_ANIMES_QUERY,
         }),
         next: { revalidate: 3600 }, // 1 hour
     })
@@ -57,9 +49,9 @@ async function getAnimeByGenre(genre: string): Promise<AnimeCardData[]> {
 }
 
 
-const GenreRow = async ({ title, genre }: GenreRowProps) => {
+const TopAnimeRow = async ({ title }: TopAnimeRowProps) => {
 
-    const animes = await getAnimeByGenre(genre)
+    const animes = await getPopularAnimes()
 
     if (animes.length === 0) return <p>Carregando...</p>;
 
@@ -77,4 +69,4 @@ const GenreRow = async ({ title, genre }: GenreRowProps) => {
     )
 }
 
-export default GenreRow
+export default TopAnimeRow

@@ -15,7 +15,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
             <div className="relative h-50 border-b-3 border-black overflow-hidden">
                 <Image
                     src={anime.imageUrl}
-                    alt={anime.title}
+                    alt={anime.title.english}
                     fill
                     className="object-cover"
                     sizes="148px"
@@ -23,7 +23,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
             </div>
             <div className="p-2.5">
                 <p className="text-[12.5px] font-bold leading-tight line-clamp-2 mb-1">
-                    {anime.title}
+                    {anime.title.english}
                 </p>
                 <p className="text-[10px] text-graphite">
                     {anime.episodes ? `${anime.episodes} eps` : "Em exibição"}

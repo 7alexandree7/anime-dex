@@ -1,6 +1,9 @@
 export interface AnimeCardData {
     mailId: number
-    title: string
+    title: {
+        romaji: string
+        english: string
+    }
     imageUrl: string
     episodes: number | null
 }

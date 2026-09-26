@@ -1,8 +1,10 @@
 import GenreRow from "@/components/explore/GenreRow";
+import TopAnimeRow from "@/components/explore/TopAnimeRow";
 
 const ExplorePage = () => {
   return (
     <main className="pt-8 pb-16">
+      <TopAnimeRow title="Top Animes" />
       <GenreRow title="Açao" genre="Action" />
       <GenreRow title="Aventura" genre="Adventure" />
       <GenreRow title="Fantasia" genre="Fantasy" />
