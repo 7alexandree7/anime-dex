@@ -14,6 +14,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
 
     const { lang } = useLenguage()
     const displayTitle = lang === "pt" ? anime.title.english : anime.title.romaji
+
     return (
         <Link
             href={`/explore/${anime.mailId}`}

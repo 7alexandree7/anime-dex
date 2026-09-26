@@ -4,18 +4,18 @@ import TopAnimeRow from "@/components/explore/TopAnimeRow";
 const ExplorePage = () => {
   return (
     <main className="pt-8 pb-16">
-      <TopAnimeRow title="Top Animes" />
-      <GenreRow title="Açao" genre="Action" />
-      <GenreRow title="Aventura" genre="Adventure" />
-      <GenreRow title="Fantasia" genre="Fantasy" />
-      <GenreRow title="Romance" genre="Romance" />
-      <GenreRow title="Drama" genre="Drama" />
-      <GenreRow title="Comedia" genre="Comedy" />
-      <GenreRow title="Misterio" genre="Mystery" />
-      <GenreRow title="Slice of Life" genre="Slice of Life" />
-      <GenreRow title="Esporte" genre="Sports" />
-      <GenreRow title="Ecchi" genre="Ecchi" />
-      <GenreRow title="Sobrenatural" genre="Supernatural" />
+      <TopAnimeRow titleKey="topAnimes" />
+      <GenreRow titleKey="action" genre="Action" />
+      <GenreRow titleKey="adventure" genre="Adventure" />
+      <GenreRow titleKey="fantasy" genre="Fantasy" />
+      <GenreRow titleKey="romance" genre="Romance" />
+      <GenreRow titleKey="drama" genre="Drama" />
+      <GenreRow titleKey="comedy" genre="Comedy" />
+      <GenreRow titleKey="mystery" genre="Mystery" />
+      <GenreRow titleKey="sliceOfLife" genre="Slice of Life" />
+      <GenreRow titleKey="sports" genre="Sports" />
+      <GenreRow titleKey="ecchi" genre="Ecchi" />
+      <GenreRow titleKey="supernatural" genre="Supernatural" />
     </main>
   );
 };

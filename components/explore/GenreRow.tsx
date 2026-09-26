@@ -1,9 +1,10 @@
-import AnimeCard from "./AnimeCard";
 import { AnimeCardData } from "@/types/anime";
 import { AnilistMedia, AnilistPageResponse } from "@/types/anilist";
+import AnimeRow from "./AnimeRow";
+import { ExploreTitleKey } from "@/translate/explore";
 
 interface GenreRowProps {
-    title: string;
+    titleKey: ExploreTitleKey;
     genre: string;
 }
 
@@ -57,24 +58,13 @@ async function getAnimeByGenre(genre: string): Promise<AnimeCardData[]> {
 }
 
 
-const GenreRow = async ({ title, genre }: GenreRowProps) => {
+const GenreRow = async ({ titleKey, genre }: GenreRowProps) => {
 
     const animes = await getAnimeByGenre(genre)
 
     if (animes.length === 0) return <p>Carregando...</p>;
 
-    return (
-        <section className="mb-8">
-            <h2 className="font-heading font-black text-xl mb-4 px-6 flex items-center gap-2">
-                <span className="text-red-500">■</span> {title}
-            </h2>
-            <div className="flex flex-col items-center justify-center gap-4 px-6 sm:flex-row sm:justify-start sm:overflow-x-auto pb-4">
-                {animes.map((anime) => (
-                    <AnimeCard key={anime.mailId} anime={anime} />
-                ))}
-            </div>
-        </section>
-    )
+    return <AnimeRow titleKey={titleKey} animes={animes} />
 }
 
 export default GenreRow
