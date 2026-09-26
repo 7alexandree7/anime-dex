@@ -23,7 +23,7 @@
                 </h2>
                 <div className="flex flex-col items-center justify-center gap-4 px-6 sm:flex-row sm:justify-start sm:overflow-x-auto pb-4">
                     {animes.map((anime) => (
-                        <AnimeCard key={anime.mailId} anime={anime} />
+                        <AnimeCard key={anime.malId} anime={anime} />
                     ))}
                 </div>
             </section>

@@ -1,5 +1,5 @@
 export interface AnimeCardData {
-    mailId: number
+    malId: number
     title: {
         romaji: string
         english: string

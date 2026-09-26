@@ -50,7 +50,7 @@ async function getAnimeByGenre(genre: string): Promise<AnimeCardData[]> {
     return mediaList
         .filter((anime) => anime.idMal !== null)
         .map((anime: AnilistMedia) => ({
-            mailId: anime.idMal as number,
+            malId: anime.idMal as number,
             title: { english: anime.title.english ?? anime.title.romaji, romaji: anime.title.romaji },
             imageUrl: anime.coverImage.large,
             episodes: anime.episodes
