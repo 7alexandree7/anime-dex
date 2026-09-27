@@ -1,4 +1,5 @@
 import AnimeDetailHero from "@/components/explore/AnimeDetailHero";
+import { ANIME_DETAIL_QUERY } from "@/graphql/query";
 import { AnilistMediaResponse } from "@/types/anilist";
 import { AnimeDetailData } from "@/types/anime";
 import { notFound } from "next/navigation";
@@ -7,46 +8,7 @@ interface ExplorePageDetailsProps {
   params: Promise<{ malId: string }>
 }
 
-const ANIME_DETAIL_QUERY = `
-  query ($malId: Int) {
-    Media(idMal: $malId, type: ANIME) {
-      id
-      idMal
-      title {
-        romaji
-        english
-      }
-      description(asHtml: false)
-      bannerImage
-      coverImage {
-        extraLarge
-        color
-      }
-      genres
-      averageScore
-      popularity
-      favourites
-      episodes
-      duration
-      status
-      format
-      season
-      seasonYear
-      studios(isMain: true) {
-        nodes {
-          name
-        }
-      }
-      trailer {
-        id
-        site
-      }
-    }
-  }
-`;
 
-// Sanitização simples: só resolve as tags mais comuns que a AniList devolve.
-// Se aparecer HTML mais complexo depois, vale trocar por uma lib (ex: html-react-parser).
 function cleanDescription(raw: string | null): string | null {
   if (!raw) return null;
   return raw

@@ -2,31 +2,13 @@ import { AnimeCardData } from "@/types/anime";
 import { AnilistMedia, AnilistPageResponse } from "@/types/anilist";
 import AnimeRow from "./AnimeRow";
 import { ExploreTitleKey } from "@/translate/explore";
+import { ANILIST_QUERY } from "@/graphql/query";
 
 interface GenreRowProps {
     titleKey: ExploreTitleKey;
     genre: string;
 }
 
-
-const ANILIST_QUERY = `
-  query ($genre: String) {
-    Page(page: 1, perPage: 14) {
-      media(genre: $genre, type: ANIME, sort: POPULARITY_DESC) {
-        id
-        idMal
-        title {
-          romaji
-          english
-        }
-        episodes
-        coverImage {
-          large
-        }
-      }
-    }
-  }
-`;
 
 async function getAnimeByGenre(genre: string): Promise<AnimeCardData[]> {
     const response = await fetch("https://graphql.anilist.co", {

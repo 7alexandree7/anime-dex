@@ -2,24 +2,12 @@ import { AnimeCardData } from "@/types/anime";
 import { AnilistMedia, AnilistPageResponse } from "@/types/anilist";
 import AnimeRow from "./AnimeRow";
 import { ExploreTitleKey } from "@/translate/explore";
+import { TOP_ANIMES_QUERY } from "@/graphql/query";
 
 interface TopAnimeRowProps {
     titleKey: ExploreTitleKey
 }
 
-const TOP_ANIMES_QUERY = `
-query {
-  Page(page: 1, perPage: 14) {
-    media(type: ANIME, sort: POPULARITY_DESC) {
-      id
-      idMal
-      title { romaji english }
-      episodes
-      coverImage { large }
-    }
-  }
-}
-`
 
 async function getPopularAnimes(): Promise<AnimeCardData[]> {
     const response = await fetch("https://graphql.anilist.co", {
