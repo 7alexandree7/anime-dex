@@ -1,9 +1,11 @@
 import GenreRow from "@/components/explore/GenreRow";
+import SearchBar from "@/components/explore/SearchBar";
 import TopAnimeRow from "@/components/explore/TopAnimeRow";
 
 const ExplorePage = () => {
   return (
-    <main className="pt-8 pb-16">
+    <main className="pt-8 pb-16 overflow-hidden">
+      <SearchBar />
       <TopAnimeRow titleKey="topAnimes" />
       <GenreRow titleKey="action" genre="Action" />
       <GenreRow titleKey="adventure" genre="Adventure" />

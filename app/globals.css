@@ -137,3 +137,12 @@ body {
     @apply font-sans;
   }
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge (Chromium) */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge legado */
+  scrollbar-width: none;      /* Firefox */
+}

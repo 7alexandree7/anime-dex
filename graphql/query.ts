@@ -1,6 +1,6 @@
 export const ANILIST_QUERY = `
   query ($genre: String) {
-    Page(page: 1, perPage: 14) {
+    Page(page: 1, perPage: 12) {
       media(genre: $genre, type: ANIME, sort: POPULARITY_DESC) {
         id
         idMal
@@ -19,7 +19,7 @@ export const ANILIST_QUERY = `
 
 export const TOP_ANIMES_QUERY = `
 query {
-  Page(page: 1, perPage: 14) {
+  Page(page: 1, perPage: 12) {
     media(type: ANIME, sort: POPULARITY_DESC) {
       id
       idMal
@@ -67,4 +67,18 @@ export const ANIME_DETAIL_QUERY = `
       }
     }
   }
+`;
+
+
+export const SEARCH_QUERY = `
+query ($search: String) {
+    Page(page: 1, perPage: 8) {
+        media(search: $search, type: ANIME) {
+            idMal
+            title { romaji english }
+            coverImage { large }
+            episodes
+        }
+    }
+}
 `;
