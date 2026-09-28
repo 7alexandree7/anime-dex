@@ -20,14 +20,25 @@ const SearchBar = () => {
             return;
         }
 
+        const controller = new AbortController();
+
         const timeoutId = setTimeout(async () => {
-            const response = await fetch(`/api/search-anime?q=${encodeURIComponent(term)}`);
-            const data: AnimeCardData[] = await response.json();
-            setResults(data);
-            setIsOpen(true);
+            try {
+                const response = await fetch(`/api/search-anime?q=${encodeURIComponent(term)}`);
+                const data: AnimeCardData[] = await response.json();
+                setResults(data);
+                setIsOpen(true);
+            } catch (err) {
+                if ((err as Error).name === "AboutError") return
+                console.error(err);
+            }
         }, 400);
 
-        return () => clearTimeout(timeoutId); // cancela a busca anterior a cada nova tecla
+        return () => {
+            clearTimeout(timeoutId); // cancela a busca anterior a cada nova tecla
+            controller.abort(); // cancela o FETCH, se já estiver em andamento
+        } 
+
     }, [term]);
 
     const handleSelect = (malId: number) => {
