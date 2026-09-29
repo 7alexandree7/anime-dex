@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimeDetailData } from "@/types/anime";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 interface AnimeDetailHeroProps {
     anime: AnimeDetailData
@@ -33,6 +34,13 @@ const AnimeDetailHero = ({ anime }: AnimeDetailHeroProps) => {
                         style={{ backgroundColor: anime.coverColor ?? "#111111" }}
                     />
                 )}
+                <Link
+                    href="/explore"
+                    aria-label="Voltar para explorar"
+                    className="absolute left-4 top-4 z-10 border-3 border-black bg-white p-2 shadow-[4px_4px_0_0_#111111] transition-transform hover:-translate-y-1"
+                >
+                    <ArrowLeft className="h-5 w-5 text-black" />
+                </Link>
             </div>
 
             <div className="relative z-10 mx-auto -mt-20 max-w-5xl px-6 md:-mt-28">
