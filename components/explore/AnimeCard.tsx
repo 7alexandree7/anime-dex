@@ -6,19 +6,18 @@ import { AnimeCardData } from "@/types/anime";
 import { useLanguage } from "@/hooks/useLanguage";
 
 interface AnimeCardProps {
-    anime: AnimeCardData
+    anime: AnimeCardData;
+    className?: string;
 }
 
-
-const AnimeCard = ({ anime }: AnimeCardProps) => {
-
-    const { lang } = useLanguage()
-    const displayTitle = lang === "pt" ? anime.title.english : anime.title.romaji
+const AnimeCard = ({ anime, className }: AnimeCardProps) => {
+    const { lang } = useLanguage();
+    const displayTitle = lang === "pt" ? anime.title.english : anime.title.romaji;
 
     return (
         <Link
             href={`/explore/${anime.malId}`}
-            className="shrink-0 w-37 border-3 border-black bg-white transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0_var(--color-red)]">
+            className={`shrink-0 w-37 border-3 border-black bg-white transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0_var(--color-red)] ${className ?? ""}`}>
 
             <div className="relative h-50 border-b-3 border-black overflow-hidden">
                 <Image
@@ -38,7 +37,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
                 </p>
             </div>
         </Link>
-    )
-}
+    );
+};
 
-export default AnimeCard
+export default AnimeCard;
