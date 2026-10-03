@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { AnimeDetailData } from "@/types/anime";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { AddToListButton } from "./AddToListButton";
 
 interface AnimeDetailHeroProps {
     anime: AnimeDetailData
@@ -94,11 +95,7 @@ const AnimeDetailHero = ({ anime }: AnimeDetailHeroProps) => {
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                    <button
-                        className="border-3 border-black bg-[#E8352C] px-6 py-3 font-heading text-sm font-black uppercase text-white shadow-[4px_4px_0_0_#111111] transition-transform hover:-translate-y-1"
-                    >
-                        + Adicionar à lista
-                    </button>
+                    <AddToListButton malId={anime.malId} title={displayTitle} imageUrl={anime.coverImage} totalEpisodes={anime.episodes} />
                     {anime.trailerUrl && (
                         <Link
                             href={anime.trailerUrl}

@@ -1,5 +1,6 @@
-"use-server";
+"use server";
 
+import { AnimeStatus } from "@/lib/generated/prisma/enums";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
@@ -8,10 +9,10 @@ import { headers } from "next/headers";
 
 interface AddToListInput {
     malId: number;
-    status: 'WATCHING' | 'COMPLETED' | 'DROPPED' | 'PLAN_TO_WATCH',
+    status: AnimeStatus;
     title: string;
     imageUrl: string;
-    totalEpisodes: number;
+    totalEpisodes: number | null;
 }
 
 
