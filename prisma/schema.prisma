@@ -94,7 +94,7 @@ model UserAnimeList {
   totalEpisodes Int?
 
   createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 
   @@unique([userId, malId])
 }
