@@ -75,5 +75,4 @@ export function AddToListButton({ malId, title, imageUrl, totalEpisodes }: AddTo
             )}
         </div>
     );
-
 }
