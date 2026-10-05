@@ -1,7 +1,7 @@
 import { AnimeStatus } from "@/lib/generated/prisma/enums";
 
 export interface DashboardListItem {
-    malId: string;
+    malId: number;
     status: AnimeStatus;
     title: string;
     imageUrl: string;
