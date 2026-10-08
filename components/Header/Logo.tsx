@@ -1,8 +1,10 @@
+
+import Link from "next/link";
 import DecryptedText from "../motion/DecryptedText";
 
 const Logo = () => {
     return (
-        <div>
+        <Link href="/" className="flex items-center gap-2">
             <div className="flex items-center">
                 <DecryptedText
                     text="Anime"
@@ -25,7 +27,7 @@ const Logo = () => {
                     style={{ display: "inline-block", width: "50px" }}
                 />
             </div>
-        </div>
+        </Link>
     )
 }
 
