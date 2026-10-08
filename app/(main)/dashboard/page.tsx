@@ -50,7 +50,7 @@ const DashboardPage = async () => {
   ) as Record<AnimeStatus, number>
 
   return (
-    <main className="mx-auto max-w-6xl px-6 pt-8 pb-20">
+    <main className="mx-[max(1.5rem,calc((100vw-72rem)/2))] px-6 pt-8 pb-20 overflow-hidden">
       <h1 className="font-heading text-2xl md:text-3xl mb-1">Minha Dashboard</h1>
       <p className="font-mono text-xs text-black/60 mb-6"> Painel de controle da sua jornada otaku</p>
       <DashboardStats counts={countMap} />
