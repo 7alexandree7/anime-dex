@@ -2,7 +2,7 @@ export interface HeaderDictionaryType {
   login: string;
   createAccount: string;
   myProfile: string;
-  myList: string;
+  dashboard: string;
   settings: string;
   logout: string;
 }

@@ -90,7 +90,9 @@ const HeaderButtons = ({ initialSession }: HeaderButtonsProps) => {
                                         <DropdownMenuGroup>
                                             <DropdownMenuItem className={"cursor-pointer"}>👤 {t.myProfile}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer"}>📋 {t.myList}</DropdownMenuItem>
+                                            <Link href="/dashboard" className={"cursor-pointer"}>
+                                                <DropdownMenuItem className={"cursor-pointer"}>📋 {t.dashboard}</DropdownMenuItem>
+                                            </Link>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem className={"cursor-pointer"}>⚙️ {t.settings}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
