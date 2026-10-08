@@ -63,7 +63,7 @@ const AnimeRow = ({ titleKey, animes }: AnimeRowProps) => {
                 <button
                     onClick={() => scroll("left")}
                     aria-label="Rolar para a esquerda"
-                    className="absolute left-2 top-1/2 z-10 -translate-y-1/2 border-3 border-black bg-white p-2 shadow-[4px_4px_0_0_#111111]"
+                    className="cursor-pointer absolute left-2 top-1/2 z-10 -translate-y-1/2 border-3 border-black bg-white p-2 shadow-[4px_4px_0_0_#111111]"
                 >
                     <ChevronLeft className="h-5 w-5" />
                 </button>
@@ -79,7 +79,7 @@ const AnimeRow = ({ titleKey, animes }: AnimeRowProps) => {
                 <button
                     onClick={() => scroll("right")}
                     aria-label="Rolar para a direita"
-                    className="absolute right-2 top-1/2 z-10 -translate-y-1/2 border-3 border-black bg-white p-2 shadow-[4px_4px_0_0_#111111]"
+                    className="curor-pointer absolute right-2 top-1/2 z-10 -translate-y-1/2 border-3 border-black bg-white p-2 shadow-[4px_4px_0_0_#111111]"
                 >
                     <ChevronRight className="h-5 w-5" />
                 </button>
