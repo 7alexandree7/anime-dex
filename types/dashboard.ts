@@ -24,3 +24,10 @@ export const STATUS_SLUGS: Record<AnimeStatus, string> = {
     PLAN_TO_WATCH: "quero-assistir",
     DROPPED: "dropado",
 }
+
+export const SLUG_TO_STATUS: Record<string, AnimeStatus> = {
+    "assistindo": "WATCHING",
+    "completo": "COMPLETED",
+    "quero-assistir": "PLAN_TO_WATCH",
+    "dropado": "DROPPED",
+}
