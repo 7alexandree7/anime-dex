@@ -27,9 +27,14 @@ const Page = async ({ params, searchParams }: SeAllAnimesProps) => {
     if (!session || !session?.user?.id) redirect('/login')
     const userId = session?.user?.id
 
+    const numberMax: number = 10
+    const pageSize = numberMax
+
     const animes = await prisma.userAnimeList.findMany({
         where: { userId, status: animeStatus },
         orderBy: { updatedAt: "desc" },
+        take: 10,
+        skip: (currentPage - 1) * pageSize
     });
 
     const label = STATUS_LABELS[animeStatus] ?? status;
