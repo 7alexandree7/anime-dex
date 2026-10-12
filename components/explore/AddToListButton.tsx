@@ -1,5 +1,8 @@
-import { addToList } from "@/app/actions/anime-list";
+"use client";
+
+import { addToList, removeFromList } from "@/app/actions/anime-list";
 import { AnimeStatus } from "@/lib/generated/prisma/enums";
+import { Trash } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface AddToListButtonProps {
@@ -51,6 +54,21 @@ export function AddToListButton({ malId, title, imageUrl, totalEpisodes, initial
         }
     }
 
+    const handleRemove = async () => {
+        setIsPending(true);
+
+        try {
+            await removeFromList(malId);
+            setSelectedStatus(null);
+            setIsOpen(false);
+        } catch (error) {
+            console.error("Erro ao remover da lista:", error);
+        } finally {
+            setIsPending(false);
+        }
+    }
+
+
     const currentLabel = STATUS_OPTIONS.find((o) => o.value === selectedStatus)?.label;
 
     return (
@@ -58,7 +76,7 @@ export function AddToListButton({ malId, title, imageUrl, totalEpisodes, initial
             <button
                 onClick={() => setIsOpen((prev) => !prev)}
                 disabled={isPending}
-                className="border-3 border-black bg-[#E8352C] px-6 py-3 font-heading text-sm font-black uppercase text-white shadow-[4px_4px_0_0_#111111] transition-transform hover:-translate-y-1 disabled:opacity-60"
+                className="cursor-pointer border-3 border-black bg-[#E8352C] px-6 py-3 font-heading text-sm font-black uppercase text-white shadow-[4px_4px_0_0_#111111] transition-transform hover:-translate-y-1 disabled:opacity-60"
             >
                 {currentLabel ? `✓ ${currentLabel}` : "+ Adicionar à lista"}
             </button>
@@ -69,11 +87,23 @@ export function AddToListButton({ malId, title, imageUrl, totalEpisodes, initial
                         <button
                             key={option.value}
                             onClick={() => handleSelect(option.value)}
-                            className="block w-full whitespace-nowrap border-b border-black px-5 py-2 text-left font-mono text-xs uppercase last:border-b-0 hover:bg-gray-100"
+                            className="cursor-pointer block w-full whitespace-nowrap border-b border-black px-5 py-2 text-left font-mono text-xs uppercase last:border-b-0 hover:bg-gray-100"
                         >
                             {option.label}
                         </button>
                     ))}
+
+                    {selectedStatus && (
+                        <button
+                            onClick={handleRemove}
+                            className="cursor-pointer block w-full whitespace-nowrap border-t-2 border-black px-5 py-2 text-left font-mono text-xs uppercase text-[#E8352C] hover:bg-gray-100"
+                        >
+                            <div className="flex items-center gap-2">
+                                <p> <Trash size={16} className="" /></p>
+                                <p> Remover da lista</p>
+                            </div>
+                        </button>
+                    )}
                 </div>
             )}
         </div>

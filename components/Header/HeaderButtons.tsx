@@ -88,13 +88,11 @@ const HeaderButtons = ({ initialSession }: HeaderButtonsProps) => {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end" sideOffset={25} className={"bg-background w-50 -mr-4.5 rounded-none p-4"}>
                                         <DropdownMenuGroup>
-                                            <DropdownMenuItem className={"cursor-pointer"}>👤 {t.myProfile}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
                                             <Link href="/dashboard" className={"cursor-pointer"}>
                                                 <DropdownMenuItem className={"cursor-pointer"}>📋 {t.dashboard}</DropdownMenuItem>
                                             </Link>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className={"cursor-pointer"}>⚙️ {t.settings}</DropdownMenuItem>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem
                                                 className={"cursor-pointer text-red"}
