@@ -7,10 +7,16 @@ interface SeeAllAnimesProps {
     animes: DashboardListItem[]
     label: string
     total: number
+    currentPage: number
+    totalPages: number
+    status: string
 }
 
 
-const SeeAllAnimes = ({ animes, label, total }: SeeAllAnimesProps) => {
+const SeeAllAnimes = ({ animes, label, total, currentPage, totalPages, status }: SeeAllAnimesProps) => {
+
+    const nextPage = () => currentPage < totalPages && currentPage + 1
+    const prevPage = () => currentPage > 1 && currentPage - 1
 
     const buttonClass =
         "inline-block border-2 border-[#111111] bg-[#F7F4ED] px-3 py-1.5 font-mono text-[11px] uppercase text-[#111111] shadow-[3px_3px_0_#111111] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5";
@@ -44,15 +50,15 @@ const SeeAllAnimes = ({ animes, label, total }: SeeAllAnimesProps) => {
                         aria-label="Paginação"
                         className="mt-10 flex items-center justify-between gap-4 border-t-[3px] border-[#111111] pt-4"
                     >
-                        <span className={`${buttonClass} opacity-40 shadow-none`}>
+                        <Link href={`/dashboard/${status}/?page=${prevPage()}`} className={`${buttonClass} opacity-40 shadow-none`}>
                             ← Anterior
-                        </span>
+                        </Link>
 
                         <span className="font-mono text-xs uppercase text-[#111111]">
-                            Pág. 1 / 4
+                            {currentPage} de {totalPages}
                         </span>
 
-                        <span className={buttonClass}>Próxima →</span>
+                        <Link href={`/dashboard/${status}/?page=${nextPage()}`} className={buttonClass}>Próxima →</Link>
                     </nav>
                 </>
             )}

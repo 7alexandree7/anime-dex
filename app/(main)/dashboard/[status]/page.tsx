@@ -11,14 +11,15 @@ interface SeAllAnimesProps {
     searchParams: Promise<{ page?: string }>
 }
 
+const PAGE_SIZE: number = 10
+
 const Page = async ({ params, searchParams }: SeAllAnimesProps) => {
 
     const { status } = await params;
     const { page } = await searchParams;
     const pageNumber = Number(page)
-    const currentPage = pageNumber > 0 ? pageNumber : 1;
-    console.log(currentPage);
-    
+    const currentPage = Number.isInteger(pageNumber) && pageNumber > 0 ? pageNumber : 1;
+
     if (!Object.hasOwn(SLUG_TO_STATUS, status)) notFound();
 
     const animeStatus = SLUG_TO_STATUS[status];
@@ -27,23 +28,25 @@ const Page = async ({ params, searchParams }: SeAllAnimesProps) => {
     if (!session || !session?.user?.id) redirect('/login')
     const userId = session?.user?.id
 
-    const numberMax: number = 10
-    const pageSize = numberMax
+    const [total, animes] = await Promise.all([
+        prisma.userAnimeList.count({
+            where: { userId, status: animeStatus },
+        }),
+        prisma.userAnimeList.findMany({
+            where: { userId, status: animeStatus },
+            orderBy: { updatedAt: "desc" },
+            take: PAGE_SIZE,
+            skip: (currentPage - 1) * PAGE_SIZE,
+        }),
+    ])
 
-    const animes = await prisma.userAnimeList.findMany({
-        where: { userId, status: animeStatus },
-        orderBy: { updatedAt: "desc" },
-        take: 10,
-        skip: (currentPage - 1) * pageSize
-    });
-
+    const totalPages = Math.ceil(total / PAGE_SIZE);
     const label = STATUS_LABELS[animeStatus] ?? status;
-    const total = animes.length ?? 0;
 
-
+    if( totalPages > 0 && currentPage > totalPages) redirect(`/dashboard/${status}?page=${totalPages}`)
 
     return (
-        <SeeAllAnimes label={label} total={total} animes={animes} />
+        <SeeAllAnimes label={label} status={status} total={total} animes={animes} currentPage={currentPage} totalPages={totalPages}/>
     )
 }
 
