@@ -1,8 +1,11 @@
 import AnimeDetailHero from "@/components/explore/AnimeDetailHero";
 import { ANIME_DETAIL_QUERY } from "@/graphql/query";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import { AnilistMediaResponse } from "@/types/anilist";
 import { AnimeDetailData } from "@/types/anime";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 interface ExplorePageDetailsProps {
   params: Promise<{ malId: string }>
@@ -71,12 +74,22 @@ async function getAnimeDetails(malId: number): Promise<AnimeDetailData | null> {
 
 const ExplorePageDetails = async ({ params }: ExplorePageDetailsProps) => {
 
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) redirect('/login');
+  const userId = session?.user?.id
   const { malId } = await params;
   const animeDetails = await getAnimeDetails(Number(malId));
 
   if (!animeDetails) return notFound();
 
-  return <AnimeDetailHero anime={animeDetails} />
+  const getStatusAnime = await prisma.userAnimeList.findUnique({
+    where: { userId_malId: { userId, malId: animeDetails.malId } },
+    select: { status: true }
+  })
+
+  console.log('getStatusAnime', getStatusAnime)
+
+  return <AnimeDetailHero anime={animeDetails} status={getStatusAnime?.status ?? null} />
 }
 
 

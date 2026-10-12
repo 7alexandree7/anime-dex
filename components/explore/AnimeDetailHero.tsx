@@ -6,12 +6,16 @@ import { AnimeDetailData } from "@/types/anime";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { AddToListButton } from "./AddToListButton";
+import { AnimeStatus } from "@/lib/generated/prisma/enums";
 
 interface AnimeDetailHeroProps {
     anime: AnimeDetailData
+    status: AnimeStatus | null
 }
 
-const AnimeDetailHero = ({ anime }: AnimeDetailHeroProps) => {
+const AnimeDetailHero = ({ anime, status }: AnimeDetailHeroProps) => {
+
+    console.log("status", status);
 
     const { lang } = useLanguage()
 
@@ -95,7 +99,7 @@ const AnimeDetailHero = ({ anime }: AnimeDetailHeroProps) => {
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                    <AddToListButton malId={anime.malId} title={displayTitle} imageUrl={anime.coverImage} totalEpisodes={anime.episodes} />
+                    <AddToListButton malId={anime.malId} title={displayTitle} imageUrl={anime.coverImage} totalEpisodes={anime.episodes} initialStatus={status} />
                     {anime.trailerUrl && (
                         <Link
                             href={anime.trailerUrl}

@@ -7,6 +7,7 @@ interface AddToListButtonProps {
     title: string;
     imageUrl: string;
     totalEpisodes: number | null;
+    initialStatus: AnimeStatus | null
 }
 
 const STATUS_OPTIONS: { value: AnimeStatus; label: string }[] = [
@@ -17,10 +18,12 @@ const STATUS_OPTIONS: { value: AnimeStatus; label: string }[] = [
 ];
 
 
-export function AddToListButton({ malId, title, imageUrl, totalEpisodes }: AddToListButtonProps) {
+export function AddToListButton({ malId, title, imageUrl, totalEpisodes, initialStatus }: AddToListButtonProps) {
+
+    console.log("initialStatus", initialStatus);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selectedStatus, setSelectedStatus] = useState<AnimeStatus | null>(null);
+    const [selectedStatus, setSelectedStatus] = useState<AnimeStatus | null>(initialStatus || null);
     const [isPending, setIsPending] = useState<boolean>(false);
     const popoverRef = useRef<HTMLDivElement>(null);
 
