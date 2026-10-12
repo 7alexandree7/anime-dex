@@ -15,8 +15,6 @@ interface AnimeDetailHeroProps {
 
 const AnimeDetailHero = ({ anime, status }: AnimeDetailHeroProps) => {
 
-    console.log("status", status);
-
     const { lang } = useLanguage()
 
     const displayTitle = lang === "pt" ? anime.title.english ?? anime.title.romaji : anime.title.romaji

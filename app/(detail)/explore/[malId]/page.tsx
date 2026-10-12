@@ -87,7 +87,6 @@ const ExplorePageDetails = async ({ params }: ExplorePageDetailsProps) => {
     select: { status: true }
   })
 
-  console.log('getStatusAnime', getStatusAnime)
 
   return <AnimeDetailHero anime={animeDetails} status={getStatusAnime?.status ?? null} />
 }
