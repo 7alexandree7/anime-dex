@@ -1,3 +1,5 @@
+"use client";
+
 import BackgroundAuth from "@/components/auth/BackgroundAuth";
 import RegisterForm from "@/components/auth/RegisterForm";
 import { useForm } from "react-hook-form";
@@ -16,6 +18,7 @@ const RegisterPageClient = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>({
         resolver: zodResolver(registerSchema),
+
     });
 
     const onSubmit = async (data: RegisterFormData) => {
