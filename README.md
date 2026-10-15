@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="./docs/banner.svg" alt="AnimeDex — tracker de animes full stack" width="100%" />
-
 <br />
 
 **Organize, acompanhe e descubra animes.**
